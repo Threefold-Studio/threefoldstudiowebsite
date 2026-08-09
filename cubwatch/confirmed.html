@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're all set, Threefold Studio</title>
+<meta name="description" content="You're confirmed and on the Cub Watch list.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight: #0A0F1F;
+    --gold: #D4AF37;
+    --gold-deep: #B8912A;
+    --ivory: #FFFBF0;
+    --slate-dim: #8892A6;
+  }
+  *{ box-sizing:border-box; }
+  html{ background:var(--midnight); }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Nunito', -apple-system, sans-serif;
+    background:var(--midnight);
+    color:var(--ivory);
+    padding:32px;
+  }
+  .card{ max-width:520px; text-align:center; }
+  .moon-mark{ width:130px; height:auto; margin:0 auto 24px; display:block; }
+  h1{
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:clamp(1.8rem, 4vw, 2.4rem);
+    margin:0 0 16px;
+    color:var(--ivory);
+  }
+  p{
+    font-size:1.05rem;
+    color:var(--slate-dim);
+    line-height:1.6;
+    margin:0 0 32px;
+  }
+  .label{
+    font-family:'Nunito', sans-serif;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:18px;
+  }
+  a.home-link{
+    display:inline-block;
+    color:var(--midnight);
+    background:var(--gold);
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.95rem;
+    padding:14px 28px;
+    border-radius:24px;
+    transition:background 0.2s ease;
+  }
+  a.home-link:hover,
+  a.home-link:focus-visible{ background:var(--gold-deep); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="moon-mark" src="/assets/cubwatch-mark.png" alt="Cub Watch logo, a bear cub asleep on a crescent moon" width="798" height="877">
+    <span class="label">Threefold Studio</span>
+    <h1>You're all set.</h1>
+    <p>Your email is confirmed. We'll let you know as Cub Watch gets closer to launch. No spam, just the updates that matter.</p>
+    <a class="home-link" href="/cubwatch">Back to Cub Watch</a>
+    <p style="margin:28px 0 0; font-size:0.8rem; opacity:0.7; line-height:1.9;"><a href="/cubwatch/privacy" style="color:inherit;">Cub Watch Privacy Policy</a><br><a href="/privacy" style="color:inherit;">Threefold Studio Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" style="color:inherit;">Threefold Studio Terms of Service</a></p>
+  </div>
+</body>
+</html>

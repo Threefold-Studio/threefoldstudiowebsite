@@ -1,0 +1,5 @@
+# Cub Watch was published at /betaapp before the name was final.
+# Keep these until the Brevo double opt-in redirect URLs are updated,
+# and ideally leave them in place permanently for any old links already shared.
+/betaapp              /cubwatch              301
+/betaapp/*            /cubwatch/:splat       301

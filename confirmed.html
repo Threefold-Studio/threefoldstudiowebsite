@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're all set, Threefold Studio</title>
+<meta name="description" content="You're confirmed and on the Threefold Studio list.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #10192B;
+    --amber: #E8A33D;
+    --cord: #B98B56;
+    --slate-dim: #8B93A0;
+    --paper: #FCFAF6;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Inter', -apple-system, sans-serif;
+    background:var(--ink);
+    color:var(--paper);
+    padding:32px;
+  }
+  .card{
+    max-width:520px;
+    text-align:center;
+  }
+  .cord-mark{
+    width:56px;
+    height:32px;
+    margin-bottom:28px;
+  }
+  h1{
+    font-family:'Spectral', Georgia, serif;
+    font-weight:600;
+    font-size:clamp(1.8rem, 4vw, 2.4rem);
+    margin:0 0 16px;
+    color:var(--paper);
+  }
+  p{
+    font-size:1.05rem;
+    color:var(--slate-dim);
+    line-height:1.6;
+    margin:0 0 32px;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    color:var(--cord);
+    display:block;
+    margin-bottom:18px;
+  }
+  a.home-link{
+    display:inline-block;
+    color:var(--ink);
+    background:var(--amber);
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:14px 28px;
+    border-radius:6px;
+    transition:background 0.2s ease;
+  }
+  a.home-link:hover,
+  a.home-link:focus-visible{ background:#C9832A; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <svg class="cord-mark" viewBox="0 0 34 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-left:auto;margin-right:auto;display:block;">
+      <defs>
+        <linearGradient id="cordGradA-cf" gradientUnits="userSpaceOnUse" x1="1" y1="10" x2="33" y2="10">
+          <stop offset="0%" stop-color="#D19749"/><stop offset="22%" stop-color="#E8A33D"/>
+          <stop offset="78%" stop-color="#E8A33D"/><stop offset="100%" stop-color="#D19749"/>
+        </linearGradient>
+        <linearGradient id="cordGradB-cf" gradientUnits="userSpaceOnUse" x1="1" y1="10" x2="33" y2="10">
+          <stop offset="0%" stop-color="#D19749"/><stop offset="22%" stop-color="#B98B56"/>
+          <stop offset="78%" stop-color="#B98B56"/><stop offset="100%" stop-color="#D19749"/>
+        </linearGradient>
+        <linearGradient id="cordGradC-cf" gradientUnits="userSpaceOnUse" x1="1" y1="10" x2="33" y2="10">
+          <stop offset="0%" stop-color="#D19749"/><stop offset="22%" stop-color="#F5EFE3"/>
+          <stop offset="78%" stop-color="#F5EFE3"/><stop offset="100%" stop-color="#D19749"/>
+        </linearGradient>
+      </defs>
+      <path d="M1 10 Q 9 2, 17 10 T 33 10" stroke="url(#cordGradA-cf)" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M1 10 Q 9 18, 17 10 T 33 10" stroke="url(#cordGradB-cf)" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M1 10 L 33 10" stroke="url(#cordGradC-cf)" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+    <span class="mono">Threefold Studio</span>
+    <h1>You're all set.</h1>
+    <p>Your email is confirmed. You'll hear from us the moment new apps from Threefold Studio are ready. No spam, just the update.</p>
+    <a class="home-link" href="https://threefoldstudio.co">Back to the site</a>
+    <p style="margin:28px 0 0; font-size:0.8rem; color:var(--slate-dim);"><a href="/privacy" style="color:inherit;">Threefold Studio Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" style="color:inherit;">Threefold Studio Terms of Service</a></p>
+  </div>
+</body>
+</html>
