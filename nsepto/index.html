@@ -89,6 +89,9 @@
   .btn-primary{ background:var(--white); color:var(--red-deep); }
   .btn-primary:hover,
   .btn-primary:focus-visible{ background:#F0E6E6; }
+  .section:not(.alt) .btn-primary{ background:var(--red-deep); color:var(--white); }
+  .section:not(.alt) .btn-primary:hover,
+  .section:not(.alt) .btn-primary:focus-visible{ background:var(--red-darker); }
   .btn-outline{ border:1px solid var(--red-deep); color:var(--red-deep); }
   .btn-outline:hover,
   .btn-outline:focus-visible{ background:rgba(168,0,0,0.06); }
@@ -151,39 +154,21 @@
 
 <section class="section alt">
   <div class="wrap">
-    <span class="label">What the board gets</span>
-    <h2>Post once.</h2>
+    <span class="label">Behind the scenes</span>
+    <h2>Posted once.</h2>
     <ul class="feature-list">
-      <li><span class="tick">&#9656;</span>Write a notification, tick "also show on the calendar", and it appears in both places with one date between them. There is no second form to fill in and no way for the two to disagree.</li>
-      <li><span class="tick">&#9656;</span>Publishing means now by default. Scheduling is something you choose on purpose, not something you have to remember to switch off.</li>
-      <li><span class="tick">&#9656;</span>Manage events, volunteer shifts, and suggestions from the same admin panel, on the phone or on the web.</li>
-      <li><span class="tick">&#9656;</span>A Front of the Line Fast Pass auction for fundraisers, with bid increments the board sets rather than the developer.</li>
+      <li><span class="tick">&#9656;</span>When the PTO writes something with a date on it, one tick puts it on the calendar too. One entry, one date, so the feed and the calendar can never tell you two different things.</li>
+      <li><span class="tick">&#9656;</span>Announcements go out the moment they're written unless the PTO means to schedule one, so nothing important sits waiting on somebody to remember to send it.</li>
+      <li><span class="tick">&#9656;</span>Events, volunteer shifts, and suggestions are all handled from one place, on a phone or a laptop, so a board member can post from the pickup line instead of waiting until they're home.</li>
+      <li><span class="tick">&#9656;</span>Fundraiser auctions, like the Front of the Line Fast Pass, run right in the app with the increments the PTO chose.</li>
     </ul>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <span class="label">Built to travel</span>
-    <h2>One school today.</h2>
-    <p style="color:var(--ink-muted); max-width:640px;">
-      NSE PTO is one app, but it was not built as a one school app. The school's name, colors,
-      grade levels, and time zone are data rather than code, so a second school is a new row in
-      a table instead of a second codebase. Think of it like a school uniform. The pattern is
-      cut once and the colors change per school, rather than every school sewing from scratch.
-    </p>
-    <p style="color:var(--ink-muted); max-width:640px; margin-top:16px;">
-      Two colors never change, deliberately. Urgent is always that red and volunteer is always
-      that green, at every school on the platform, because a parent who moves across town should
-      not have to relearn what red means.
-    </p>
-  </div>
-</section>
-
-<section class="section alt">
-  <div class="wrap">
     <h2>Already an NSE parent?</h2>
-    <p style="max-width:620px;">
+    <p style="color:var(--ink-muted); max-width:620px;">
       The website is live now, with the same notifications, the same calendar, and the same
       volunteer sign ups. The app is in review on both stores.
     </p>
@@ -191,13 +176,13 @@
       <a class="btn btn-primary" href="https://nsepto.com" target="_blank" rel="noopener">Go to nsepto.com &#8594;</a>
       <a class="btn btn-outline" href="/">Back to Threefold Studio</a>
     </div>
-    <p class="link-row" style="color:rgba(255,255,255,0.75);">
+    <p class="link-row">
       NSE PTO has its own policies:
-      <a href="https://nsepto.com/privacy" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Privacy Policy</a>
+      <a href="https://nsepto.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
       &nbsp;&#183;&nbsp;
-      <a href="https://nsepto.com/terms" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Terms of Service</a>
+      <a href="https://nsepto.com/terms" target="_blank" rel="noopener">Terms of Service</a>
       &nbsp;&#183;&nbsp;
-      <a href="https://nsepto.com/support" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Support</a>
+      <a href="https://nsepto.com/support" target="_blank" rel="noopener">Support</a>
     </p>
   </div>
 </section>
