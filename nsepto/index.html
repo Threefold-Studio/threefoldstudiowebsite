@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSE PTO, Threefold Studio</title>
+<meta name="description" content="Everything happening at school, in one place. Notifications, a calendar you can subscribe to, volunteer sign ups, and a suggestion box, for the parents of North Smyrna Elementary.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NSE PTO, Threefold Studio">
+<meta property="og:description" content="Everything happening at school, in one place. Currently in review on the App Store and Google Play.">
+<meta property="og:image" content="https://threefoldstudio.co/social-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://threefoldstudio.co/social-share.png">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red: #ED0000;        /* NSE Red, from the app's brand tokens */
+    --red-deep: #A80000;   /* the app's "urgent" red, dark enough for white text */
+    --red-darker: #8A0000; /* pressed / hover */
+    --green: #2E9E4F;      /* Volunteer Green, platform-wide in the app */
+    --blue: #0057B8;       /* Neutral Blue */
+    --ink: #14181F;
+    --ink-muted: #5A6472;
+    --hairline: #E2E6EC;
+    --canvas: #F6F7F9;
+    --white: #FFFFFF;
+  }
+  *{ box-sizing:border-box; }
+  html{ background:var(--canvas); }
+  body{ margin:0; font-family:'Source Sans 3', -apple-system, sans-serif; color:var(--ink); background:var(--canvas); line-height:1.6; }
+  h1,h2,h3{ font-family:'Bebas Neue', Impact, sans-serif; font-weight:400; letter-spacing:0.02em; margin:0 0 0.4em; }
+  a{ color:inherit; }
+  .label{ font-family:'Source Sans 3', sans-serif; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; font-size:0.72rem; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
+
+  .back-link{ display:inline-block; padding:24px 0; color:var(--ink-muted); text-decoration:none; font-size:0.9rem; }
+  .back-link:hover,
+  .back-link:focus-visible{ color:var(--red-deep); }
+
+  .eagle-mark{ width:150px; height:auto; display:block; margin:0 0 20px; }
+
+  .hero{ background:var(--red-deep); color:var(--white); padding:60px 0 70px; }
+  .hero .label{ color:rgba(255,255,255,0.72); display:block; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(2.8rem, 8vw, 4.6rem); color:var(--white); line-height:1; margin-bottom:10px; }
+  .hero .subtitle{ font-size:clamp(1.1rem, 2.4vw, 1.4rem); font-weight:600; color:var(--white); margin:0 0 6px; }
+  .hero .tagline{ font-size:1.05rem; color:rgba(255,255,255,0.8); margin:0 0 26px; }
+  .hero p.desc{ color:rgba(255,255,255,0.86); font-size:1.05rem; max-width:620px; margin-bottom:30px; }
+
+  .status-pill{
+    display:inline-flex; align-items:center; gap:9px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.3);
+    color:var(--white);
+    border-radius:999px; padding:8px 18px; margin-bottom:28px;
+    font-size:0.85rem; font-weight:600;
+  }
+  .status-pill .dot{ width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; }
+
+  .section{ padding:64px 0; }
+  .section.alt{ background:var(--red-deep); }
+  .section.alt h2{ color:var(--white); }
+  .section.alt p{ color:rgba(255,255,255,0.84); }
+  .section h2{ font-size:clamp(1.8rem, 4.5vw, 2.6rem); color:var(--red-deep); }
+  .section .label{ color:var(--red); }
+  .section.alt .label{ color:rgba(255,255,255,0.72); }
+
+  .feature-list{ list-style:none; padding:0; margin:24px 0 0; display:grid; gap:14px; }
+  .feature-list li{
+    display:flex; gap:12px;
+    padding:16px 20px;
+    background:var(--white);
+    border:1px solid var(--hairline);
+    border-left:4px solid var(--red);
+    border-radius:8px;
+    color:var(--ink);
+  }
+  .feature-list li .tick{ color:var(--red); flex-shrink:0; font-weight:700; line-height:1.55; }
+  .section.alt .feature-list li{ border-color:transparent; border-left-color:var(--green); }
+
+  .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ display:inline-block; padding:14px 26px; border-radius:6px; text-decoration:none; font-weight:700; font-size:0.95rem; }
+  .btn-primary{ background:var(--white); color:var(--red-deep); }
+  .btn-primary:hover,
+  .btn-primary:focus-visible{ background:#F0E6E6; }
+  .btn-outline{ border:1px solid var(--red-deep); color:var(--red-deep); }
+  .btn-outline:hover,
+  .btn-outline:focus-visible{ background:rgba(168,0,0,0.06); }
+  .section.alt .btn-outline{ border-color:rgba(255,255,255,0.6); color:var(--white); }
+  .section.alt .btn-outline:hover{ background:rgba(255,255,255,0.1); }
+
+  .link-row{ margin-top:26px; font-size:0.95rem; color:var(--ink-muted); }
+  .link-row a{ color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(0,87,184,0.3); }
+  .link-row a:hover{ border-bottom-color:var(--blue); }
+
+  footer{ background:var(--canvas); color:var(--ink-muted); padding:40px 0; text-align:center; font-size:0.85rem; border-top:1px solid var(--hairline); }
+  footer a{ color:var(--red-deep); text-decoration:none; }
+  .footer-socials{ display:flex; justify-content:center; gap:20px; margin-bottom:20px; }
+  .footer-socials a{ color:var(--red-deep); }
+  .footer-socials a:hover{ color:var(--red); }
+</style>
+</head>
+<body>
+
+<div class="wrap"><a class="back-link" href="/">&#8592; Back to Threefold Studio</a></div>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="eagle-mark" src="/assets/nsepto-mark.png" alt="North Smyrna Elementary eagle" width="875" height="732">
+    <span class="label">Threefold Studio</span>
+    <h1>NSE PTO</h1>
+    <p class="subtitle">Everything happening at school, in one place.</p>
+    <p class="tagline">For the parents of North Smyrna Elementary.</p>
+
+    <div class="status-pill"><span class="dot"></span>In review on the App Store and Google Play</div>
+
+    <p class="desc">
+      School news arrives in six different places at once, and the one thing you needed is
+      always in whichever one you missed. NSE PTO puts the notifications, the calendar, the
+      volunteer sign ups, and the suggestion box in a single app, and keeps the website and
+      the phone in step so they can never tell you two different things.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://nsepto.com" target="_blank" rel="noopener">Visit nsepto.com &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="label">What parents get</span>
+    <h2>One place to look.</h2>
+    <ul class="feature-list">
+      <li><span class="tick">&#9656;</span>Every announcement from the PTO in one feed. Pinned items stay at the top and urgent ones are red, so the thing you can't miss is the thing you see first.</li>
+      <li><span class="tick">&#9656;</span>A school calendar with every event, and on iPhone you can subscribe so school dates land in your own Calendar app alongside everything else in your life.</li>
+      <li><span class="tick">&#9656;</span>Tell it your child's grade once, from EC through 3rd, and the feed stops showing you what belongs to somebody else's classroom.</li>
+      <li><span class="tick">&#9656;</span>The home screen is a digest, not a second feed. Anything pinned or urgent, the next three events, the three most recent notifications, and nothing else.</li>
+      <li><span class="tick">&#9656;</span>Volunteer sign ups live in the app, so claiming a shift takes one tap instead of a reply-all thread.</li>
+      <li><span class="tick">&#9656;</span>A suggestion box that goes straight to the board, for the times you have an idea but not a meeting to bring it to.</li>
+      <li><span class="tick">&#9656;</span>Sign in with Apple or Google. No new password to invent and forget.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <span class="label">What the board gets</span>
+    <h2>Post once.</h2>
+    <ul class="feature-list">
+      <li><span class="tick">&#9656;</span>Write a notification, tick "also show on the calendar", and it appears in both places with one date between them. There is no second form to fill in and no way for the two to disagree.</li>
+      <li><span class="tick">&#9656;</span>Publishing means now by default. Scheduling is something you choose on purpose, not something you have to remember to switch off.</li>
+      <li><span class="tick">&#9656;</span>Manage events, volunteer shifts, and suggestions from the same admin panel, on the phone or on the web.</li>
+      <li><span class="tick">&#9656;</span>A Front of the Line Fast Pass auction for fundraisers, with bid increments the board sets rather than the developer.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="label">Built to travel</span>
+    <h2>One school today.</h2>
+    <p style="color:var(--ink-muted); max-width:640px;">
+      NSE PTO is one app, but it was not built as a one school app. The school's name, colors,
+      grade levels, and time zone are data rather than code, so a second school is a new row in
+      a table instead of a second codebase. Think of it like a school uniform. The pattern is
+      cut once and the colors change per school, rather than every school sewing from scratch.
+    </p>
+    <p style="color:var(--ink-muted); max-width:640px; margin-top:16px;">
+      Two colors never change, deliberately. Urgent is always that red and volunteer is always
+      that green, at every school on the platform, because a parent who moves across town should
+      not have to relearn what red means.
+    </p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <h2>Already an NSE parent?</h2>
+    <p style="max-width:620px;">
+      The website is live now, with the same notifications, the same calendar, and the same
+      volunteer sign ups. The app is in review on both stores.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://nsepto.com" target="_blank" rel="noopener">Go to nsepto.com &#8594;</a>
+      <a class="btn btn-outline" href="/">Back to Threefold Studio</a>
+    </div>
+    <p class="link-row" style="color:rgba(255,255,255,0.75);">
+      NSE PTO has its own policies:
+      <a href="https://nsepto.com/privacy" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Privacy Policy</a>
+      &nbsp;&#183;&nbsp;
+      <a href="https://nsepto.com/terms" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Terms of Service</a>
+      &nbsp;&#183;&nbsp;
+      <a href="https://nsepto.com/support" target="_blank" rel="noopener" style="color:#FFF; border-bottom-color:rgba(255,255,255,0.4);">Support</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-socials">
+      <a href="https://x.com/threefoldapps" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.9 1.9h3.4l-7.5 8.6 8.8 11.6h-6.9l-5.4-7.1-6.2 7.1H1.7l8-9.2L1.3 1.9h7l4.9 6.5zm-1.2 18.2h1.9L6.4 3.8H4.3z"/></svg>
+      </a>
+      <a href="https://instagram.com/threefoldapps" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://tiktok.com/@threefoldapps" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.6 5.82c-1-.85-1.6-2.1-1.6-3.5h-3.1v13.6c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.3 0 .6 0 .9.1v-3.1c-.3 0-.6-.1-.9-.1-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V8.4a7.6 7.6 0 0 0 4.4 1.4V6.7c-1 0-2-.3-2.8-.9z"/></svg>
+      </a>
+      <a href="https://reddit.com/u/threefoldapps" target="_blank" rel="noopener" aria-label="Reddit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><circle cx="8.5" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="13" r="1.2" fill="currentColor" stroke="none"/><path d="M8 16.5c1 .8 2.3 1.2 4 1.2s3-.4 4-1.2"/></svg>
+      </a>
+    </div>
+    <p>NSE PTO is a product of <a href="/">Threefold Studio LLC</a>.</p>
+    <p><a href="mailto:hello@threefoldstudio.co">hello@threefoldstudio.co</a></p>
+    <p style="font-size:0.85rem; opacity:0.8;"><a href="https://nsepto.com/privacy" target="_blank" rel="noopener">NSE PTO Privacy Policy</a> &nbsp;&#183;&nbsp; <a href="https://nsepto.com/terms" target="_blank" rel="noopener">NSE PTO Terms of Service</a></p>
+    <p style="font-size:0.85rem; opacity:0.8;"><a href="/privacy">Threefold Studio Privacy Policy</a> &nbsp;&#183;&nbsp; <a href="/terms">Threefold Studio Terms of Service</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
