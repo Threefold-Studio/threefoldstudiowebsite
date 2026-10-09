@@ -574,7 +574,7 @@
     </form>
     <p class="form-note">No spam. Just a heads up when new apps become available.</p>
     <div class="hero-countdown">
-      <p class="hero-countdown-label">ThrottleEDGE launches this November</p>
+      <p class="hero-countdown-label">Cub Watch launches November 1</p>
       <div class="hero-countdown-units">
         <div><span id="hero-months">--</span><br><em>MO</em></div>
         <div><span id="hero-weeks">--</span><br><em>WK</em></div>
@@ -629,28 +629,20 @@
     <p class="apps-subhead">Published and upcoming apps, listed below.</p>
     <div class="app-grid">
       <div class="app-card">
-        <img class="card-logo" src="/assets/throttleedge-card.jpg" alt="ThrottleEDGE logo">
-        <span class="status mono">Launching November 2026</span>
-        <h3>ThrottleEDGE<span style="font-size:0.6em; vertical-align:super;">™</span></h3>
+        <img class="card-logo" src="/assets/nsepto-card.jpg" alt="NSE PTO app icon">
+        <span class="status mono">In review, launching October 2026</span>
+        <h3>NSE PTO</h3>
         <p>
-          Voice-first GPS navigation for motorcyclists. Turn-by-turn directions,
-          live weather, and safety alerts, delivered by voice, hands stay on the bars.
-          Built by a rider, for riders.
+          Everything happening at school, in one place. Notifications, a calendar you can
+          subscribe to on your phone, volunteer sign ups, and a suggestion box, for the
+          parents of North Smyrna Elementary.
         </p>
-        <p class="tagline">Safety features are always free.</p>
-        <div class="countdown">
-          <div><span id="te-months">--</span><br><em>MO</em></div>
-          <div><span id="te-weeks">--</span><br><em>WK</em></div>
-          <div><span id="te-days">--</span><br><em>DAY</em></div>
-          <div><span id="te-hours">--</span><br><em>HR</em></div>
-          <div><span id="te-mins">--</span><br><em>MIN</em></div>
-          <div><span id="te-secs">--</span><br><em>SEC</em></div>
-        </div>
-        <a class="app-link" href="/throttleedge">Learn more →</a>
+        <p class="tagline">One place to look.</p>
+        <a class="app-link" href="/nsepto">Learn more →</a>
       </div>
       <div class="app-card">
         <img class="card-logo" src="/assets/cubwatch-card.jpg" alt="Cub Watch logo">
-        <span class="status mono">Launching January 2027</span>
+        <span class="status mono">Launching November 1, 2026</span>
         <h3>Cub Watch</h3>
         <p>
           A simple companion for breastfeeding and bottle feeding parents, day and night. Track
@@ -669,16 +661,24 @@
         <a class="app-link" href="/cubwatch">Learn more →</a>
       </div>
       <div class="app-card">
-        <img class="card-logo" src="/assets/nsepto-card.jpg" alt="NSE PTO app icon">
-        <span class="status mono">In review on both stores</span>
-        <h3>NSE PTO</h3>
+        <img class="card-logo" src="/assets/throttleedge-card.jpg" alt="ThrottleEDGE logo">
+        <span class="status mono">Launching December 1, 2026</span>
+        <h3>ThrottleEDGE<span style="font-size:0.6em; vertical-align:super;">™</span></h3>
         <p>
-          Everything happening at school, in one place. Notifications, a calendar you can
-          subscribe to on your phone, volunteer sign ups, and a suggestion box, for the
-          parents of North Smyrna Elementary.
+          Voice-first GPS navigation for motorcyclists. Turn-by-turn directions,
+          live weather, and safety alerts, delivered by voice, hands stay on the bars.
+          Built by a rider, for riders.
         </p>
-        <p class="tagline">One place to look.</p>
-        <a class="app-link" href="/nsepto">Learn more →</a>
+        <p class="tagline">Safety features are always free.</p>
+        <div class="countdown">
+          <div><span id="te-months">--</span><br><em>MO</em></div>
+          <div><span id="te-weeks">--</span><br><em>WK</em></div>
+          <div><span id="te-days">--</span><br><em>DAY</em></div>
+          <div><span id="te-hours">--</span><br><em>HR</em></div>
+          <div><span id="te-mins">--</span><br><em>MIN</em></div>
+          <div><span id="te-secs">--</span><br><em>SEC</em></div>
+        </div>
+        <a class="app-link" href="/throttleedge">Learn more →</a>
       </div>
       <div class="app-card">
         <img class="card-logo" src="/assets/kappa-card.svg" alt="Project Kappa mark">
@@ -783,15 +783,16 @@
     setInterval(tick, 1000);
   }
 
+  // Hero clock follows the soonest dated launch, which is Cub Watch.
   startCountdown("2026-11-01T00:00:00-04:00", {
     months:"hero-months", weeks:"hero-weeks", days:"hero-days",
     hours:"hero-hours", mins:"hero-mins", secs:"hero-secs"
   });
-  startCountdown("2026-11-01T00:00:00-04:00", {
+  startCountdown("2026-12-01T00:00:00-05:00", {
     months:"te-months", weeks:"te-weeks", days:"te-days",
     hours:"te-hours", mins:"te-mins", secs:"te-secs"
   });
-  startCountdown("2027-01-01T00:00:00-05:00", {
+  startCountdown("2026-11-01T00:00:00-04:00", {
     months:"nt-months", weeks:"nt-weeks", days:"nt-days",
     hours:"nt-hours", mins:"nt-mins", secs:"nt-secs"
   });
