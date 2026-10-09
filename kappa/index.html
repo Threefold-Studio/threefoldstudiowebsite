@@ -152,6 +152,36 @@
   .footer-socials{ display:flex; justify-content:center; gap:20px; margin-bottom:20px; }
   .footer-socials a{ color:var(--muted); }
   .footer-socials a:hover{ color:var(--gold); }
+
+  /* ---------- Ambient sound toggle ---------- */
+  .sound-toggle{
+    position:fixed; right:22px; bottom:22px; z-index:50;
+    width:46px; height:46px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:rgba(29,25,40,0.92);
+    border:1px solid rgba(111,216,208,0.3);
+    color:var(--muted);
+    cursor:pointer;
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    transition:color .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .sound-toggle:hover,
+  .sound-toggle:focus-visible{ color:var(--arcane); border-color:rgba(111,216,208,0.65); }
+  .sound-toggle:focus-visible{ outline:2px solid var(--arcane); outline-offset:3px; }
+  .sound-toggle[aria-pressed="true"]{
+    color:var(--ember);
+    border-color:rgba(228,112,58,0.6);
+    box-shadow:0 0 14px rgba(228,112,58,0.25);
+  }
+  .sound-toggle .wave{ opacity:0; transition:opacity .25s ease; }
+  .sound-toggle[aria-pressed="true"] .wave{ opacity:1; }
+  .sound-toggle .slash{ opacity:1; transition:opacity .25s ease; }
+  .sound-toggle[aria-pressed="true"] .slash{ opacity:0; }
+  @media (max-width:600px){
+    .sound-toggle{ right:14px; bottom:14px; width:42px; height:42px; }
+  }
 </style>
 </head>
 <body>
@@ -305,6 +335,294 @@
     <p style="font-size:0.85rem; opacity:0.8;"><a href="/privacy">Threefold Studio Privacy Policy</a> &nbsp;&#183;&nbsp; <a href="/terms">Threefold Studio Terms of Service</a></p>
   </div>
 </footer>
+
+
+<button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false"
+        aria-label="Turn ambient sound on" title="Ambient sound">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+       stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 9.5h3.3L12 5.4v13.2L7.3 14.5H4z" fill="currentColor" stroke="none"/>
+    <path class="wave" d="M15.4 9.3a4 4 0 0 1 0 5.4"/>
+    <path class="wave" d="M18 6.7a7.6 7.6 0 0 1 0 10.6"/>
+    <line class="slash" x1="15.4" y1="9.2" x2="20.6" y2="14.8"/>
+  </svg>
+</button>
+
+<script>
+/* Ambient bed for Project Kappa.
+ *
+ * Synthesised in the browser rather than streamed: no audio file, nothing to
+ * license, and the real theme can replace it later without touching anything
+ * but this block.
+ *
+ * The shape of it is the game's: a dark floor that is always there, and a light
+ * that rises against it and is pushed back. Both are driven from ONE slow
+ * oscillator read with opposite sign, so the two can never swell together --
+ * the light only gains ground as the dark gives it up.
+ *
+ * Nothing plays until the visitor asks. Browsers would block it anyway, and it
+ * is the right manners regardless.
+ */
+(function () {
+  'use strict';
+
+  var KEY = 'kappa-ambient';
+  var MASTER = 0.52;          // measured A-weighted, not guessed -- see the offline render
+  var FADE = 3.0;             // seconds, both directions
+
+  var btn = document.getElementById('sound-toggle');
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!btn) { return; }
+  if (!AC) { btn.hidden = true; return; }
+
+  var ctx = null, master = null, emberTimer = null, playing = false;
+
+  /* White noise loops seamlessly. Every sample is independent, so the seam is
+   * statistically identical to the rest of the buffer and there is nothing to
+   * crossfade. Brown noise would need a crossfade; filtering gets us the same
+   * darkness without one. */
+  function whiteNoise(ac, seconds) {
+    var len = Math.floor(ac.sampleRate * seconds);
+    var buf = ac.createBuffer(1, len, ac.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < len; i++) { d[i] = Math.random() * 2 - 1; }
+    return buf;
+  }
+
+  function buildBed(ac, dest) {
+    var noise = whiteNoise(ac, 4);
+    var out = ac.createGain();
+    out.gain.value = 1;
+    out.connect(dest);
+
+    function pan(node, amount) {
+      if (!ac.createStereoPanner) { node.connect(out); return; }
+      var p = ac.createStereoPanner();
+      p.pan.value = amount;
+      node.connect(p);
+      p.connect(out);
+    }
+
+    /* A slow oscillator used as a control signal. depth may be negative, which
+     * is how the dark gets the inverse of whatever the light is given. */
+    function mod(rate, depth, param) {
+      var o = ac.createOscillator();
+      o.frequency.value = rate;
+      var g = ac.createGain();
+      g.gain.value = depth;
+      o.connect(g); g.connect(param);
+      o.start();
+      return o;
+    }
+
+    // ---- the tide: one cycle every ~80 seconds, feeding both sides ----------
+    var tide = ac.createOscillator();
+    tide.frequency.value = 0.0125;
+    tide.start();
+    function pull(depth, param) {       // positive rises with the light
+      var g = ac.createGain();
+      g.gain.value = depth;
+      tide.connect(g); g.connect(param);
+    }
+
+    // ---- DARK: the floor ----------------------------------------------------
+    var darkLP = ac.createBiquadFilter();
+    darkLP.type = 'lowpass';
+    darkLP.frequency.value = 520;
+    darkLP.Q.value = 0.7;
+    darkLP.connect(out);
+    pull(-130, darkLP.frequency);       // closes down as the light rises
+
+    var darkMix = ac.createGain();
+    darkMix.gain.value = 0.9;
+    darkMix.connect(darkLP);
+    pull(-0.09, darkMix.gain);
+
+    // A minor, low and open. The third is the unease, and it leaves with the dark.
+    [{ hz: 55,     g: 0.17,  type: 'sine',     rate: 0.021 },
+     { hz: 82.41,  g: 0.15,  type: 'sine',     rate: 0.016 },
+     { hz: 110,    g: 0.19,  type: 'triangle', rate: 0.027 },
+     { hz: 130.81, g: 0.12,  type: 'sine',     rate: 0.009, dark: -0.03 }
+    ].forEach(function (v) {
+      var o = ac.createOscillator();
+      o.type = v.type;
+      o.frequency.value = v.hz;
+      var g = ac.createGain();
+      g.gain.value = v.g;
+      o.connect(g); g.connect(darkMix);
+      mod(v.rate, v.g * 0.4, g.gain);   // each voice breathes on its own clock
+      mod(0.017, 3.5, o.detune);        // and drifts, so the chord never locks
+      if (v.dark) { pull(v.dark, g.gain); }
+      o.start();
+    });
+
+    // Sub rumble under all of it.
+    var rumble = ac.createBufferSource();
+    rumble.buffer = noise; rumble.loop = true;
+    var rumbleBP = ac.createBiquadFilter();
+    rumbleBP.type = 'bandpass'; rumbleBP.frequency.value = 70; rumbleBP.Q.value = 0.9;
+    var rumbleG = ac.createGain();
+    rumbleG.gain.value = 0.11;
+    rumble.connect(rumbleBP); rumbleBP.connect(rumbleG); rumbleG.connect(darkMix);
+    mod(0.013, 0.05, rumbleG.gain);
+    rumble.start();
+
+    // ---- WIND: belongs to neither side -------------------------------------
+    [{ f: 180, q: 0.7, g: 0.34, rate: 0.045, p: -0.3 },
+     { f: 850, q: 2.2, g: 0.18, rate: 0.031, p:  0.35 }
+    ].forEach(function (w) {
+      var src = ac.createBufferSource();
+      src.buffer = noise; src.loop = true;
+      var bp = ac.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = w.f; bp.Q.value = w.q;
+      var g = ac.createGain();
+      g.gain.value = w.g;
+      src.connect(bp); bp.connect(g);
+      pan(g, w.p);
+      mod(w.rate, w.g * 0.55, g.gain);
+      mod(w.rate * 0.7, w.f * 0.3, bp.frequency);
+      src.start();
+    });
+
+    // ---- LIGHT: comes through, never wins -----------------------------------
+    var lightLP = ac.createBiquadFilter();
+    lightLP.type = 'lowpass';
+    lightLP.frequency.value = 3000;
+    lightLP.connect(out);
+
+    var lightMix = ac.createGain();
+    lightMix.gain.value = 0.62;         // 0.34 at the trough, 0.90 at the crest:
+    lightMix.connect(lightLP);          // pushed back, never extinguished
+    pull(0.28, lightMix.gain);
+    pull(900, lightLP.frequency);       // and opens up as it does
+
+    // 440 against 440.4 beats roughly every two and a half seconds. That slow
+    // shimmer is the whole effect; a single clean tone sounds like a test tone.
+    [{ hz: 440,    g: 0.055, rate: 0.019 },
+     { hz: 440.4,  g: 0.055, rate: 0.023 },
+     { hz: 659.25, g: 0.030, rate: 0.015 },
+     { hz: 880,    g: 0.016, rate: 0.011 }
+    ].forEach(function (v) {
+      var o = ac.createOscillator();
+      o.type = 'sine';
+      o.frequency.value = v.hz;
+      var g = ac.createGain();
+      g.gain.value = v.g;
+      o.connect(g); g.connect(lightMix);
+      mod(v.rate, v.g * 0.6, g.gain);
+      o.start();
+    });
+
+    // Air: high filtered noise, the look of light through cloud.
+    var air = ac.createBufferSource();
+    air.buffer = noise; air.loop = true;
+    var airBP = ac.createBiquadFilter();
+    airBP.type = 'bandpass'; airBP.frequency.value = 2600; airBP.Q.value = 1.2;
+    var airG = ac.createGain();
+    airG.gain.value = 0.12;
+    air.connect(airBP); airBP.connect(airG); airG.connect(lightMix);
+    mod(0.011, 0.06, airG.gain);
+    air.start();
+
+    return { out: out, noise: noise };
+  }
+
+  // Embers: a quiet tick at an interval that never lands on a beat.
+  function startEmbers(bed) {
+    function one() {
+      if (!playing) { return; }
+      var t = ctx.currentTime;
+      var src = ctx.createBufferSource();
+      src.buffer = bed.noise;
+      var hp = ctx.createBiquadFilter();
+      hp.type = 'highpass';
+      hp.frequency.value = 1100 + Math.random() * 1900;
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(0.03 + Math.random() * 0.025, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.06 + Math.random() * 0.09);
+      src.connect(hp); hp.connect(g);
+      if (ctx.createStereoPanner) {
+        var p = ctx.createStereoPanner();
+        p.pan.value = Math.random() * 1.4 - 0.7;
+        g.connect(p); p.connect(bed.out);
+      } else {
+        g.connect(bed.out);
+      }
+      src.start(t, Math.random() * 3);
+      src.stop(t + 0.3);
+      emberTimer = setTimeout(one, 1400 + Math.random() * 6500);
+    }
+    emberTimer = setTimeout(one, 1500);
+  }
+
+  function ramp(to, seconds) {
+    var now = ctx.currentTime;
+    master.gain.cancelScheduledValues(now);
+    master.gain.setValueAtTime(master.gain.value, now);
+    master.gain.linearRampToValueAtTime(to, now + seconds);
+  }
+
+  function start() {
+    if (!ctx) {
+      ctx = new AC();
+      master = ctx.createGain();
+      master.gain.value = 0;
+      var comp = ctx.createDynamicsCompressor();   // nothing here should ever spike,
+      master.connect(comp);                        // but a cheap seatbelt is a seatbelt
+      comp.connect(ctx.destination);
+      var bed = buildBed(ctx, master);
+      playing = true;
+      startEmbers(bed);
+    }
+    playing = true;
+    if (ctx.state === 'suspended') { ctx.resume(); }
+    ramp(MASTER, FADE);
+    btn.setAttribute('aria-pressed', 'true');
+    btn.setAttribute('aria-label', 'Turn ambient sound off');
+    try { localStorage.setItem(KEY, 'on'); } catch (e) {}
+  }
+
+  function stop() {
+    playing = false;
+    if (emberTimer) { clearTimeout(emberTimer); emberTimer = null; }
+    if (ctx) { ramp(0, 1.2); }
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Turn ambient sound on');
+    try { localStorage.removeItem(KEY); } catch (e) {}
+  }
+
+  btn.addEventListener('click', function () {
+    if (btn.getAttribute('aria-pressed') === 'true') { stop(); } else { start(); }
+  });
+
+  // Don't play to an empty room.
+  document.addEventListener('visibilitychange', function () {
+    if (!ctx || !playing) { return; }
+    if (document.hidden) { ramp(0, 0.4); }
+    else { ramp(MASTER, 1.5); }
+  });
+
+  /* Someone who turned it on last visit gets it back, but a browser still will
+   * not make noise before it has been touched -- so wait for the first gesture
+   * rather than trying and failing. */
+  var wanted = false;
+  try { wanted = localStorage.getItem(KEY) === 'on'; } catch (e) {}
+  if (wanted) {
+    var resume = function () {
+      document.removeEventListener('pointerdown', resume);
+      document.removeEventListener('keydown', resume);
+      start();
+    };
+    document.addEventListener('pointerdown', resume, { once: true });
+    document.addEventListener('keydown', resume, { once: true });
+  }
+
+  // Exposed so the output level can be measured in an OfflineAudioContext
+  // instead of tuned by ear against whatever machine happens to be handy.
+  window.KappaAmbient = { buildBed: buildBed, MASTER: MASTER };
+})();
+</script>
 
 </body>
 </html>
