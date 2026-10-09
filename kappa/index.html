@@ -154,19 +154,26 @@
   .footer-socials a:hover{ color:var(--gold); }
 
   /* ---------- Ambient sound toggle ---------- */
+  /* Top right, so it is in the first screen rather than found by scrolling,
+     and fixed, so it can still be switched off three screens down. */
   .sound-toggle{
-    position:fixed; right:22px; bottom:22px; z-index:50;
-    width:46px; height:46px; padding:0;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:50%;
+    position:fixed; right:22px; top:20px; z-index:50;
+    height:38px; padding:0 14px 0 12px;
+    display:inline-flex; align-items:center; gap:8px;
+    border-radius:999px;
     background:rgba(29,25,40,0.92);
     border:1px solid rgba(111,216,208,0.3);
     color:var(--muted);
+    font-family:'Cinzel', serif;
+    font-size:0.66rem; font-weight:600;
+    letter-spacing:0.16em; text-transform:uppercase;
     cursor:pointer;
     -webkit-backdrop-filter:blur(6px);
     backdrop-filter:blur(6px);
     transition:color .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
+  .sound-toggle .sound-label::after{ content:'Sound'; }
+  .sound-toggle[aria-pressed="true"] .sound-label::after{ content:'Sound on'; }
   .sound-toggle:hover,
   .sound-toggle:focus-visible{ color:var(--arcane); border-color:rgba(111,216,208,0.65); }
   .sound-toggle:focus-visible{ outline:2px solid var(--arcane); outline-offset:3px; }
@@ -180,7 +187,7 @@
   .sound-toggle .slash{ opacity:1; transition:opacity .25s ease; }
   .sound-toggle[aria-pressed="true"] .slash{ opacity:0; }
   @media (max-width:600px){
-    .sound-toggle{ right:14px; bottom:14px; width:42px; height:42px; }
+    .sound-toggle{ right:14px; top:16px; height:34px; padding:0 11px 0 9px; font-size:0.6rem; gap:6px; }
   }
 </style>
 </head>
@@ -339,13 +346,14 @@
 
 <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false"
         aria-label="Turn ambient sound on" title="Ambient sound">
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M4 9.5h3.3L12 5.4v13.2L7.3 14.5H4z" fill="currentColor" stroke="none"/>
     <path class="wave" d="M15.4 9.3a4 4 0 0 1 0 5.4"/>
     <path class="wave" d="M18 6.7a7.6 7.6 0 0 1 0 10.6"/>
     <line class="slash" x1="15.4" y1="9.2" x2="20.6" y2="14.8"/>
   </svg>
+  <span class="sound-label"></span>
 </button>
 
 <script>
