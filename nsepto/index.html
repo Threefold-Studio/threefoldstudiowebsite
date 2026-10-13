@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NSE PTO, Threefold Studio">
-<meta property="og:description" content="Everything happening at school, in one place. Launching October 2026.">
+<meta property="og:description" content="Everything happening at school, in one place. Out now on the App Store and Google Play.">
 <meta property="og:image" content="https://threefoldstudio.co/social-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://threefoldstudio.co/social-share.png">
@@ -85,6 +85,14 @@
   .section.alt .feature-list li{ border-color:transparent; border-left-color:var(--green); }
 
   .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  /* Store buttons: white on the red hero, filled red on a light section. */
+  .btn-store{ display:inline-flex; align-items:center; gap:9px; background:var(--white); color:var(--red-deep); }
+  .btn-store:hover,
+  .btn-store:focus-visible{ background:#F0E6E6; }
+  .section:not(.alt) .btn-store{ background:var(--red-deep); color:var(--white); }
+  .section:not(.alt) .btn-store:hover,
+  .section:not(.alt) .btn-store:focus-visible{ background:var(--red-darker); }
+  .btn-store svg{ flex-shrink:0; }
   .btn{ display:inline-block; padding:14px 26px; border-radius:6px; text-decoration:none; font-weight:700; font-size:0.95rem; }
   .btn-primary{ background:var(--white); color:var(--red-deep); }
   .btn-primary:hover,
@@ -121,7 +129,7 @@
     <p class="subtitle">Everything happening at school, in one place.</p>
     <p class="tagline">For the parents of North Smyrna Elementary.</p>
 
-    <div class="status-pill"><span class="dot"></span>In review, launching October 2026</div>
+    <div class="status-pill"><span class="dot"></span>Out now on the App Store and Google Play</div>
 
     <p class="desc">
       School news arrives in six different places at once, and the one thing you needed is
@@ -131,8 +139,13 @@
     </p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://nsepto.com" target="_blank" rel="noopener">Visit nsepto.com &#8594;</a>
+      <a class="btn btn-store" href="https://apps.apple.com/app/id6816827500" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.08 1.35 10.72.9 1.29 1.97 2.74 3.38 2.69 1.36-.06 1.87-.88 3.51-.88 1.64 0 2.1.88 3.53.85 1.46-.02 2.38-1.32 3.27-2.62 1.03-1.5 1.46-2.95 1.48-3.03-.03-.01-2.84-1.09-2.87-4.32zM14.6 4.2c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.29 1.19.09 2.41-.6 3.16-1.5z"/></svg> Download on the App Store</a>
+      <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=co.threefoldstudio.nsepto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M3.6 2.2a1 1 0 0 0-.5.9v17.8a1 1 0 0 0 .5.9l.1.05 9.95-9.9v-.1L3.7 2.15z"/><path d="M16.9 15.2 13.6 11.95v-.1l3.3-3.26.08.04 3.95 2.24c1.13.64 1.13 1.68 0 2.32l-3.95 2.24z"/><path d="M16.9 15.2 13.6 11.9 3.6 21.8a1.3 1.3 0 0 0 1.66.05z"/><path d="M16.9 8.63 5.26 2.05A1.3 1.3 0 0 0 3.6 2.2l10 9.9z"/></svg> Get it on Google Play</a>
     </div>
+    <p style="margin-top:16px; font-size:0.95rem; color:rgba(255,255,255,0.75);">
+      Or use it in a browser at
+      <a href="https://nsepto.com" target="_blank" rel="noopener" style="color:#FFF;">nsepto.com</a>.
+    </p>
   </div>
 </section>
 
@@ -169,12 +182,13 @@
   <div class="wrap">
     <h2>Already an NSE parent?</h2>
     <p style="color:var(--ink-muted); max-width:620px;">
-      The website is live now, with the same notifications, the same calendar, and the same
-      volunteer sign ups. The app lands on both stores in October.
+      The app is out on both stores. The website has the same notifications, the same calendar,
+      and the same volunteer sign ups, for anyone who would rather not install anything.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://nsepto.com" target="_blank" rel="noopener">Go to nsepto.com &#8594;</a>
-      <a class="btn btn-outline" href="/">Back to Threefold Studio</a>
+      <a class="btn btn-store" href="https://apps.apple.com/app/id6816827500" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.08 1.35 10.72.9 1.29 1.97 2.74 3.38 2.69 1.36-.06 1.87-.88 3.51-.88 1.64 0 2.1.88 3.53.85 1.46-.02 2.38-1.32 3.27-2.62 1.03-1.5 1.46-2.95 1.48-3.03-.03-.01-2.84-1.09-2.87-4.32zM14.6 4.2c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.07-1.13 3.29 1.19.09 2.41-.6 3.16-1.5z"/></svg> App Store</a>
+      <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=co.threefoldstudio.nsepto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M3.6 2.2a1 1 0 0 0-.5.9v17.8a1 1 0 0 0 .5.9l.1.05 9.95-9.9v-.1L3.7 2.15z"/><path d="M16.9 15.2 13.6 11.95v-.1l3.3-3.26.08.04 3.95 2.24c1.13.64 1.13 1.68 0 2.32l-3.95 2.24z"/><path d="M16.9 15.2 13.6 11.9 3.6 21.8a1.3 1.3 0 0 0 1.66.05z"/><path d="M16.9 8.63 5.26 2.05A1.3 1.3 0 0 0 3.6 2.2l10 9.9z"/></svg> Google Play</a>
+      <a class="btn btn-outline" href="https://nsepto.com" target="_blank" rel="noopener">nsepto.com &#8594;</a>
     </div>
     <p class="link-row">
       NSE PTO has its own policies:
