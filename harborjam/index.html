@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harbor Jam, Threefold Studio</title>
-<meta name="description" content="A one thumb boat puzzle for phones. Tap boats out of a jammed marina, load matching ships, and chain convoys across 400 hand tuned levels.">
+<meta name="description" content="A one thumb boat puzzle for phones. Tap boats out of a jammed marina, load matching ships, and chain convoys across 500 levels.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -86,6 +86,9 @@
   .section.alt{ background:var(--navy); color:var(--cream); }
   .section.sea{ background:var(--sea-glass); }
   .section h2{ font-size:clamp(1.8rem, 4.5vw, 2.6rem); color:var(--ocean-blue); }
+  /* A heading that ends its band would otherwise add its own margin to the
+     section padding and sit high in the block. */
+  .section h2:last-child{ margin-bottom:0; }
   .section.alt h2{ color:var(--golden-hour); }
   .section .label{ color:var(--coral); display:block; margin-bottom:8px; }
   .section.alt .label{ color:var(--sun-gold); }
@@ -108,14 +111,6 @@
   .section.alt .feature-list li{ background:rgba(255,248,238,0.07); border-color:rgba(255,248,238,0.14); border-left-color:var(--golden-hour); color:rgba(255,248,238,0.92); }
   .feature-list li .glyph{ color:var(--coral); flex-shrink:0; line-height:1.6; font-weight:700; }
   .section.alt .feature-list li .glyph{ color:var(--golden-hour); }
-
-  .stat-row{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); margin-top:30px; }
-  .stat{
-    background:#FFFFFF; border:1px solid rgba(23,36,62,0.1);
-    border-radius:12px; padding:22px;
-  }
-  .stat .num{ font-family:'Lilita One', sans-serif; font-size:2.1rem; color:var(--coral); line-height:1; display:block; margin-bottom:6px; }
-  .stat .cap{ font-size:0.92rem; color:var(--ink-soft); }
 
   .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
   .btn{ display:inline-block; padding:14px 26px; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; font-family:'Nunito', sans-serif; }
@@ -194,18 +189,7 @@
 <section class="section sea">
   <div class="wrap">
     <span class="label">How much of it there is</span>
-    <h2>Four hundred levels, all of them winnable.</h2>
-    <div class="stat-row">
-      <div class="stat"><span class="num">400</span><span class="cap">hand tuned levels, each one retuned every time a rule changed</span></div>
-      <div class="stat"><span class="num">100%</span><span class="cap">proven solvable by a solver, with four slots and no boosters</span></div>
-      <div class="stat"><span class="num">7</span><span class="cap">cargo colors, kept far enough apart to tell at a glance</span></div>
-    </div>
-    <p style="margin-top:26px;">
-      That second number is the one worth explaining. Every level is run through a solver
-      that has to finish it using only what a player starts with, no purchases and no help.
-      A level that cannot be beaten honestly does not ship. It is checked again, all four
-      hundred of them, every time a rule changes.
-    </p>
+    <h2>Five hundred levels at launch.</h2>
   </div>
 </section>
 
