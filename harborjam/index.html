@@ -112,6 +112,17 @@
   .feature-list li .glyph{ color:var(--coral); flex-shrink:0; line-height:1.6; font-weight:700; }
   .section.alt .feature-list li .glyph{ color:var(--golden-hour); }
 
+  /* Day and night side by side: the clearest way to show a feature that is
+     about time passing. */
+  .scene-pair{
+    display:grid; gap:16px;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    max-width:640px; margin-top:28px;
+  }
+  .scene-pair figure{ margin:0; }
+  .scene-pair img{ width:100%; height:auto; display:block; border-radius:12px; box-shadow:0 12px 28px rgba(23,36,62,0.22); }
+  .scene-pair figcaption{ margin-top:9px; font-size:0.78rem; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--ocean-blue); }
+
   .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
   .btn{ display:inline-block; padding:14px 26px; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.95rem; font-family:'Nunito', sans-serif; }
   .btn-primary{ background:var(--coral); color:#FFFFFF; }
@@ -179,10 +190,33 @@
       <li><span class="glyph">&#9679;</span>Tugboats tow a line of boats behind them, in colors that are not their own, and will not sail at all until a ship of their own color is docked.</li>
       <li><span class="glyph">&#9679;</span>Submarines dive under the boat in front and surface in the next gap, so they need the gap to exist.</li>
       <li><span class="glyph">&#9679;</span>Sailboats wait for the wind. Fishing boats leave a buoy behind them. Low bridges let the small hulls through and stop the big ones.</li>
-      <li><span class="glyph">&#9679;</span>Whirlpools bend a route sideways, and partway through the game they start turning the other way.</li>
-      <li><span class="glyph">&#9679;</span>Freighters that take two colors at once, express freighters that rotate to the back of the queue, and cargo marked by symbol instead of color.</li>
-      <li><span class="glyph">&#9679;</span>Pirates, eventually. A cannon that blocks a berth, and a gunboat that clears a lane.</li>
+      <li><span class="glyph">&#9679;</span>Whirlpools turn a boat a quarter turn, and a level later you meet the ones that spin the other way.</li>
+      <li><span class="glyph">&#9679;</span>Tides that turn every three moves, sandbars that close a lane for a while, ice that freezes a boat in place, and fog you cannot see through.</li>
+      <li><span class="glyph">&#9679;</span>Drawbridges that open and close on a count. A kraken that reaches out and takes a boat. Sea caves that swallow a boat here and spit it out over there.</li>
+      <li><span class="glyph">&#9679;</span>Pirates who block the way and gunboats that sink them, and on the hardest days, pirates who come and rob the pier itself.</li>
     </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="label">The harbor itself</span>
+    <h2>It knows what time it is where you are.</h2>
+    <p>
+      The harbor runs on your sunrise and your sunset, not a timer. Play in the morning and the
+      water is bright; play late and the scene goes to dusk and then to night, with the
+      lighthouse beam swinging across the water while you work.
+    </p>
+    <div class="scene-pair">
+      <figure>
+        <img src="/assets/harborjam-scene-day.jpg" alt="The harbor in daylight, bright water and a lighthouse on the point" width="460" height="690" loading="lazy">
+        <figcaption>Morning</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/harborjam-scene-night.jpg" alt="The same harbor at night, moonlight on the water and fireflies along the shore" width="460" height="690" loading="lazy">
+        <figcaption>After dark</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
