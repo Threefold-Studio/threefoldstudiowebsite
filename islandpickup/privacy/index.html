@@ -63,7 +63,7 @@
 
     <h2>The short version</h2>
     <div class="callout">
-      <p style="margin:0;">Island Pickup saves your progress to the cloud so it survives a new phone. To do that, the app creates an anonymous player account the first time it runs, with no name, email, or sign in required. You can attach that save to your Apple or Google account if you want it back after a reinstall. The app shows ads through Google AdMob, and you can decline ad personalization. There are no in-app purchases in this version. We never sell your information.</p>
+      <p style="margin:0;">Island Pickup saves your progress to the cloud so it survives a new phone. To do that, the app creates an anonymous player account the first time it runs, with no name, email, or sign in required. You can attach that save to your Apple or Google account if you want it back after a reinstall. The app shows ads through Google AdMob, and you can decline ad personalization. Optional purchases go through the App Store or Google Play, and we never see your payment details. We never sell your information.</p>
     </div>
 
     <h2>Your player account</h2>
@@ -78,21 +78,24 @@
     <h2>Signing in (optional)</h2>
     <p>You can link your save to an Apple or Google account from the Cloud Save screen. This is never required to play. If you do, Apple or Google sends us the identifier for your account and, depending on what you allow on their consent screen, your name and email address. We use these only to recognize you on a new device or after a reinstall. We do not email you.</p>
 
-    <h2>Advertising</h2>
-    <p>Island Pickup shows ads through <strong>Google AdMob</strong>: short ads between some levels, and reward ads that you choose to watch for an in-game bonus. Reward ads never play on their own. To serve ads, the AdMob SDK collects the kinds of information ad networks use, such as your device's advertising identifier, IP address, device model and operating system, and how you interact with the ads. Google's handling of that data is covered by <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+    <h2>Ads</h2>
+    <p>Island Pickup shows ads through <strong>Google AdMob</strong>: reward ads that you choose to watch for in-game bonuses, and short ads between some levels. Reward ads never play on their own. To show and measure ads, the AdMob SDK collects your device's advertising identifier and basic device and usage information, such as device model, operating system, IP address, and how you interact with the ads. <a href="https://policies.google.com/privacy">Google's privacy policy</a> governs that data. See also <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites or apps that use its services</a>.</p>
     <ul>
+      <li><strong>In the EEA, UK and Switzerland, and where US state privacy laws apply,</strong> Google's consent form appears before any ad loads, and your answer controls whether ads are personalized.</li>
       <li><strong>On iPhone,</strong> the app asks once whether you allow tracking (Apple's App Tracking Transparency prompt). If you say no, AdMob still shows ads, but they are not personalized to you.</li>
-      <li><strong>In the EEA and UK,</strong> the app shows Google's consent form before any ad loads, and your answer controls whether ads are personalized.</li>
       <li><strong>On Android,</strong> you can reset or delete your advertising ID in your phone's Google settings.</li>
+      <li><strong>Remove Ads:</strong> buying Remove Ads turns off the ads between levels. Reward ads stay available as an option.</li>
     </ul>
     <p>The game plays exactly the same whichever way you answer.</p>
+
+    <h2>In-app purchases</h2>
+    <p>Island Pickup offers optional purchases: coin packs, bundles, Remove Ads, and a season pass. They are sold through the <strong>App Store</strong> on iPhone and <strong>Google Play</strong> on Android. Apple or Google handles payment, and we never see card or payment details. Purchases are processed by <strong>RevenueCat</strong>, which receives your anonymous player id and the purchase record so your purchases can be restored on a new phone. We store a record of each purchase (product, store, transaction id, and price) with your player account. Coins and boosters can still be earned by playing or from reward ads.</p>
 
     <h2>Notifications</h2>
     <p>If you turn reminders on, the app schedules a reminder when your lives are full and one daily reminder on your phone. No server is involved, and they are off until you turn them on. This version of the app does not send push notifications from us.</p>
 
     <h2>Information the app does not touch</h2>
     <ul>
-      <li><strong>No purchases.</strong> This version has no in-app purchases. Coins and boosters are earned in the game or from reward ads.</li>
       <li><strong>No analytics or crash reporting services.</strong> Apart from what the AdMob SDK collects to serve ads, the level results above are the only usage data we keep, and they go to our own database.</li>
       <li><strong>No camera, microphone, photos, contacts, or location.</strong> The app never requests them. It reads your phone's time zone only to draw the island sky at the right time of day; the time zone is not sent anywhere.</li>
     </ul>
@@ -104,7 +107,7 @@
     <ul>
       <li><strong>Play without signing in:</strong> the default. Your save is tied only to the anonymous id on your phone.</li>
       <li><strong>Ad personalization:</strong> decline tracking when iOS asks, or change it later under Settings, Privacy &amp; Security, Tracking. On Android, reset or delete your advertising ID in Google settings.</li>
-      <li><strong>Delete your account:</strong> the Cloud Save screen has a Delete account option. It removes your player account and every row tied to it, including progress, level results, and any linked Apple or Google identity. This cannot be undone. It does not reach data AdMob has already collected; use the Google controls above for that.</li>
+      <li><strong>Delete your account:</strong> the Cloud Save screen has a Delete account option. It removes your player account and every row tied to it, including progress, level results, purchase records stored on our servers, and any linked Apple or Google identity. This cannot be undone. It does not remove data that Apple, Google, RevenueCat, or AdMob already hold under their own policies; use their controls for that.</li>
       <li><strong>Deleting the app:</strong> removes the local copy of your progress. The cloud copy stays until you delete the account, so you can come back to it.</li>
     </ul>
 
@@ -115,6 +118,7 @@
     <ul>
       <li><strong>Supabase:</strong> hosts the database and the sign-in system that the player account lives in.</li>
       <li><strong>Google AdMob:</strong> serves the ads, with Google's User Messaging Platform for the consent form.</li>
+      <li><strong>RevenueCat:</strong> processes in-app purchases and keeps the record that lets you restore them.</li>
       <li><strong>Apple and Google:</strong> Sign in with Apple and Google Sign-In, if you choose to link an account.</li>
       <li><strong>Google Fonts:</strong> the app loads its typeface from Google's font servers the first time it runs and caches it on the device.</li>
     </ul>
@@ -124,7 +128,7 @@
     <p>Data on your device is protected by your phone's own security. Data in our database is protected by row-level rules so that one player can only read and write their own rows, and connections to it are encrypted.</p>
 
     <h2>Changes to this policy</h2>
-    <p>If this policy changes, we will update the dates at the top. Anything new that handles your information, such as in-app purchases or push notifications, will be described here before the version that adds it ships.</p>
+    <p>If this policy changes, we will update the dates at the top. Anything new that handles your information, such as push notifications, will be described here before the version that adds it ships.</p>
 
     <h2>Contact us</h2>
     <p>If you have questions about this policy or how Island Pickup handles information, contact us at <a href="mailto:hello@threefoldstudio.co">hello@threefoldstudio.co</a>.</p>
