@@ -63,7 +63,7 @@
 
     <h2>The short version</h2>
     <div class="callout">
-      <p style="margin:0;">Harbor Jam saves your progress to the cloud so it survives a new phone. To do that, the app creates an anonymous player account the first time it runs, with no name, email, or sign in required. You can attach that save to your Apple or Google account if you want it back after a reinstall. The app has no advertising and no in-app purchases in this version. We never sell your information.</p>
+      <p style="margin:0;">Harbor Jam saves your progress to the cloud so it survives a new phone. To do that, the app creates an anonymous player account the first time it runs, with no name, email, or sign in required. You can attach that save to your Apple or Google account if you want it back after a reinstall. The app shows ads through Google AdMob, and you can decline ad personalization. Optional purchases go through the App Store or Google Play, and we never see your payment details. We never sell your information.</p>
     </div>
 
     <h2>Your player account</h2>
@@ -84,11 +84,22 @@
       <li><strong>Messages from us:</strong> if you allow notifications, your phone gets a push token from Apple or Google. The app saves that token with your player account and subscribes to a general topic so we can send news about the game, such as a new season or a new set of levels. Pushes go through Google Firebase Cloud Messaging. Turning notifications off in your phone's settings stops them.</li>
     </ul>
 
+    <h2>Ads</h2>
+    <p>Harbor Jam shows ads through <strong>Google AdMob</strong>: reward ads that you choose to watch for in-game bonuses, and short ads between some levels. Reward ads never play on their own. To show and measure ads, the AdMob SDK collects your device's advertising identifier and basic device and usage information, such as device model, operating system, IP address, and how you interact with the ads. <a href="https://policies.google.com/privacy">Google's privacy policy</a> governs that data. See also <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites or apps that use its services</a>.</p>
+    <ul>
+      <li><strong>In the EEA, UK and Switzerland, and where US state privacy laws apply,</strong> Google's consent form appears before any ad loads, and your answer controls whether ads are personalized.</li>
+      <li><strong>On iPhone,</strong> the app asks once whether you allow tracking (Apple's App Tracking Transparency prompt). If you say no, AdMob still shows ads, but they are not personalized to you.</li>
+      <li><strong>On Android,</strong> you can reset or delete your advertising ID in your phone's Google settings.</li>
+      <li><strong>Remove Ads:</strong> buying Remove Ads turns off the ads between levels. Reward ads stay available as an option.</li>
+    </ul>
+    <p>The game plays exactly the same whichever way you answer.</p>
+
+    <h2>In-app purchases</h2>
+    <p>Harbor Jam offers optional purchases: coin packs, bundles, Remove Ads, and a season pass. They are sold through the <strong>App Store</strong> on iPhone and <strong>Google Play</strong> on Android. Apple or Google handles payment, and we never see card or payment details. Purchases are processed by <strong>RevenueCat</strong>, which receives your anonymous player id and the purchase record so your purchases can be restored on a new phone. We store a record of each purchase (product, store, transaction id, and price) with your player account. Coins and boosters can still be earned by playing.</p>
+
     <h2>Information the app does not touch</h2>
     <ul>
-      <li><strong>No advertising.</strong> This version of Harbor Jam has no ad network in it.</li>
-      <li><strong>No purchases.</strong> This version has no in-app purchases. Coins and boosters are earned in the game.</li>
-      <li><strong>No analytics or crash reporting services.</strong> The level results above are the only usage data we keep, and they go to our own database, not to a third party.</li>
+      <li><strong>No analytics or crash reporting services.</strong> Apart from what the AdMob SDK collects to serve ads, the level results above are the only usage data we keep, and they go to our own database, not to a third party.</li>
       <li><strong>No camera, microphone, photos, contacts, or location.</strong> The app never requests them. It reads your phone's time zone only to draw the harbor sky at the right time of day; the time zone is not sent anywhere.</li>
     </ul>
 
@@ -98,7 +109,8 @@
     <h2>Your choices and control over your data</h2>
     <ul>
       <li><strong>Play without signing in:</strong> the default. Your save is tied only to the anonymous id on your phone.</li>
-      <li><strong>Delete your account:</strong> the Cloud Save screen has a Delete account option. It removes your player account and every row tied to it, including progress, level results, push tokens, and any linked Apple or Google identity. This cannot be undone.</li>
+      <li><strong>Delete your account:</strong> the Cloud Save screen has a Delete account option. It removes your player account and every row tied to it, including progress, level results, push tokens, purchase records stored on our servers, and any linked Apple or Google identity. This cannot be undone. It does not remove data that Apple, Google, RevenueCat, or AdMob already hold under their own policies; use their controls for that.</li>
+      <li><strong>Ad personalization:</strong> decline tracking when iOS asks, or change it later under Settings, Privacy &amp; Security, Tracking. On Android, reset or delete your advertising ID in Google settings.</li>
       <li><strong>Notifications:</strong> turn reminders off in the app and pushes off in your phone's settings.</li>
       <li><strong>Deleting the app:</strong> removes the local copy of your progress. The cloud copy stays until you delete the account, so you can come back to it.</li>
     </ul>
@@ -110,16 +122,18 @@
     <ul>
       <li><strong>Supabase:</strong> hosts the database and the sign-in system that the player account lives in.</li>
       <li><strong>Apple and Google:</strong> Sign in with Apple and Google Sign-In, if you choose to link an account.</li>
+      <li><strong>Google AdMob:</strong> serves the ads, with Google's User Messaging Platform for the consent form.</li>
+      <li><strong>RevenueCat:</strong> processes in-app purchases and keeps the record that lets you restore them.</li>
       <li><strong>Google Firebase Cloud Messaging:</strong> delivers push notifications.</li>
       <li><strong>Google Fonts:</strong> the app loads its typeface from Google's font servers the first time it runs and caches it on the device.</li>
     </ul>
-    <p>Each of these providers processes data on our behalf under its own privacy policy, and none of them is allowed to use it for anything else.</p>
+    <p>Each of these providers processes data on our behalf under its own privacy policy, and none of them is allowed to use it for anything else. AdMob is the exception: Google serves ads as an independent business and its privacy policy, linked above, governs what it does with ad data.</p>
 
     <h2>Security</h2>
     <p>Data on your device is protected by your phone's own security. Data in our database is protected by row-level rules so that one player can only read and write their own rows, and connections to it are encrypted.</p>
 
     <h2>Changes to this policy</h2>
-    <p>If this policy changes, we will update the dates at the top. Anything new that handles your information, such as advertising or in-app purchases, will be described here before the version that adds it ships.</p>
+    <p>If this policy changes, we will update the dates at the top. Anything new that handles your information will be described here before the version that adds it ships.</p>
 
     <h2>Contact us</h2>
     <p>If you have questions about this policy or how Harbor Jam handles information, contact us at <a href="mailto:hello@threefoldstudio.co">hello@threefoldstudio.co</a>.</p>
