@@ -73,9 +73,9 @@ Processors named in privacy policies:
 
 ### Git and review
 - Never push to main. Work on a branch, open a pull request, and never merge without Seth's explicit approval, except under the standing approval below.
-- Standing approval (Seth, 7 Nov 2026): when ChatGPT Codex finishes reviewing a PR's latest commit with no findings, and the repo's own checks pass, Claude may merge that PR without waiting for Seth, then start the Codemagic (when set up) TestFlight build (and the Google Play (when set up) internal build once Android is set up). Still wait for Seth when: the PR needs SQL that has not been run yet (a website merge deploys at once); Codex left any finding, until it is fixed and a fresh Codex review is clean; or the step is an App Store or Google Play (when set up) production submission. Say in chat what was merged and built.
+- Standing approval (Seth, 7 Nov 2026): when ChatGPT Codex finishes reviewing a PR's latest commit with no findings, and the repo's own checks pass, Claude may merge that PR without waiting for Seth, then start the Codemagic TestFlight build (when set up) (and the Play internal build once Android is set up). Still wait for Seth when: the PR needs SQL that has not been run yet (a website merge deploys at once); Codex left any finding, until it is fixed and a fresh Codex review is clean; or the step is an App Store or Google Play production submission. Say in chat what was merged and built.
 - Commits are authored Seth A. Ward Sr. <admin@threefoldstudio.co>. Never add a Co-Authored-By line for Claude, and never add any Claude or AI trailer to commits or PR descriptions.
-- SQL and Edge Functions (Seth, 7 Nov 2026; Supabase (when set up)): when a Supabase access token is saved on this environment, Claude runs migrations and deploys Edge Functions itself. Do not paste the SQL in chat first; say in one or two lines what is being changed, then run it, then report the result. Anything that deletes data (DELETE, TRUNCATE, DROP TABLE or DROP COLUMN on a table with rows, removing storage objects) waits for Seth: say in plain words what would be deleted and run it only after he says okay. Dropping a constraint, index, trigger or function deletes no data. Without a token, give Seth the SQL to paste in full.
+- SQL and Edge Functions (Seth, 7 Nov 2026): when a Supabase access token is saved on this environment (when set up), Claude runs migrations and deploys Edge Functions itself. Do not paste the SQL in chat first; say in one or two lines what is being changed, then run it, then report the result. Anything that deletes data (DELETE, TRUNCATE, DROP TABLE or DROP COLUMN on a table with rows, removing storage objects) waits for Seth: say in plain words what would be deleted and run it only after he says okay. Dropping a constraint, index, trigger or function deletes no data. Without a token, give Seth the SQL to paste in full.
 - Stage files by path. Do not use git add -A.
 - One commit per change, with a clear message.
 - Pull the branch's latest before working on it. Retry pulls and pushes only for network errors.
@@ -100,7 +100,7 @@ Processors named in privacy policies:
 
 ### Versioning
 - MAJOR.MINOR.PATCH+BUILD. Every new build raises the build number.
-- The version stays the same across test builds (TestFlight, Google Play (when set up) testing tracks) until that version is released to the public. The first build after a release raises the version.
+- The version stays the same across test builds (TestFlight, Play testing tracks (when set up)) until that version is released to the public. The first build after a release raises the version.
 - Build numbers never reset, are never reused, and are never date stamps. An uploaded build that was never released is still spent. iOS and Android share one build counter.
 
 ### Images
