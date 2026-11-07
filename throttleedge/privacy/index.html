@@ -63,7 +63,7 @@
 
     <h2>The short version</h2>
     <div class="callout">
-      <p style="margin:0;">ThrottleEDGE runs on your location. It uses where you are to draw the map, build a route, read the posted speed limit, name the city and state you are riding through, and fetch the weather ahead of you. To do that, your location goes to Mapbox, to OpenWeatherMap, and to your phone's own geocoder (Apple or Google). It does not go to us: we run no servers, there is no account, and the app keeps no history of where you have been. There are no ads, no analytics, and no crash reporting.</p>
+      <p style="margin:0;">ThrottleEDGE runs on your location. It uses where you are to draw the map, build a route, read the posted speed limit, name the city and state you are riding through, and fetch the weather ahead of you. To do that, your location goes to Mapbox, to OpenWeatherMap, and to your phone's own geocoder (Apple or Google). It does not go to us: we run no servers, there is no account, and the app keeps no history of where you have been. There are no ads, no crash reporting, and no analytics of ours. The one exception is the Mapbox map SDK, which collects its own anonymized usage telemetry unless you turn it off from the map, as described below.</p>
     </div>
 
     <h2>Location</h2>
@@ -92,7 +92,7 @@
     <ul>
       <li><strong>No account, no sign in.</strong> There is nothing to register and nothing that identifies you to us.</li>
       <li><strong>No saved data.</strong> The app keeps no settings file, no recent destinations, no ride log. Close the app and the destination and route are gone.</li>
-      <li><strong>No analytics, crash reporting, advertising, or tracking</strong> of any kind. Apple's privacy manifest for the app declares precise location, used only for app functionality, not linked to you and not used for tracking.</li>
+      <li><strong>No analytics, crash reporting, advertising, or tracking of ours.</strong> We run no analytics or crash reporting service and no ad network. The only usage data that leaves the app is the Mapbox SDK's own telemetry, described above, which you can turn off from the map. Apple's privacy manifest for the app declares precise location, used only for app functionality, not linked to you and not used for tracking.</li>
       <li><strong>No camera, photos, microphone, contacts, or Bluetooth.</strong> The app never requests them.</li>
       <li><strong>Sunrise and sunset</strong> for the glare and dusk announcements are calculated on the phone from your position. No service is called for them.</li>
     </ul>
