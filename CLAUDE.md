@@ -43,7 +43,8 @@ Pages and the apps they cover:
 - `/throttleedge`: ThrottleEDGE(TM), "Launching January 1, 2027", links throttleedge.com; "Safety features are always free", optional subscription.
 - `/harborjam` (+ `/harborjam/privacy`): Harbor Jam, in development.
 - `/islandpickup` (+ `/islandpickup/privacy`): Island Pickup, in development.
-- `/kappa`: Project Kappa, in development, "Working title".
+- `/kaijukandy`: Kaiju Kandy, in development (in testing). Owned by this site's non-legal work, not the legal chat (Seth, 7 Nov 2026).
+- `/kappa`: Untitled Dragon RPG, in development, "Working title". The public name replaced "Project Kappa" on 7 Nov 2026 because Kappa is an internal codename; the `/kappa` address stays so old links keep working.
 - `/privacy`, `/terms`: site-only policies (effective August 6, 2026; Terms governed by Delaware law).
 - `/links`: link-in-bio page.
 
