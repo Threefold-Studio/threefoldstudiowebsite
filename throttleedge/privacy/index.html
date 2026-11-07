@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThrottleEDGE Privacy Policy</title>
+<meta name="description" content="Privacy policy for ThrottleEDGE, a voice first motorcycle GPS and ride awareness app for iOS and Android by Threefold Studio.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #10192B;
+    --amber: #E8A33D;
+    --slate: #57606F;
+    --slate-dim: #8B93A0;
+    --parchment: #F5EFE3;
+    --paper: #FCFAF6;
+  }
+  *{ box-sizing:border-box; }
+  html{ background:var(--paper); }
+  body{ margin:0; font-family:'Inter', -apple-system, sans-serif; color:var(--ink); background:var(--paper); line-height:1.7; }
+  h1,h2{ font-family:'Spectral', Georgia, serif; font-weight:600; color:var(--ink); }
+  a{ color:var(--amber); }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 32px; }
+  header{ background:var(--ink); padding:36px 0; }
+  header .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .back-link{ color:var(--slate-dim); text-decoration:none; font-size:0.9rem; }
+  .back-link:hover{ color:var(--amber); }
+  .content{ padding:56px 0 80px; }
+  h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0 0 8px; }
+  .meta{ font-family:'Inter', sans-serif; font-size:0.85rem; color:var(--slate-dim); margin:0 0 40px; }
+  h2{ font-size:1.25rem; margin:40px 0 12px; }
+  p, li{ color:var(--slate); font-size:0.98rem; }
+  ul{ padding-left:22px; }
+  li{ margin-bottom:8px; }
+  hr{ border:none; border-top:1px solid rgba(16,25,43,0.1); margin:32px 0; }
+  .callout{ background:var(--parchment); border-radius:8px; padding:20px 24px; margin:24px 0; }
+  footer{ background:var(--ink); color:var(--slate-dim); padding:32px 0; text-align:center; font-size:0.85rem; }
+  footer a{ color:var(--amber); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back-link" href="/throttleedge">← Back to ThrottleEDGE</a>
+  </div>
+</header>
+
+<div class="content">
+  <div class="wrap">
+    <h1>ThrottleEDGE Privacy Policy</h1>
+    <p class="meta">For the ThrottleEDGE app on iOS and Android &nbsp;•&nbsp; Effective date: November 7, 2026 &nbsp;•&nbsp; Last updated: November 7, 2026</p>
+
+    <p>ThrottleEDGE ("the app," "we," "us") is a voice first motorcycle GPS and ride awareness app built by Threefold Studio LLC. This policy explains what information the app handles, where it goes, and what choices you have. It is written to match what the app's code actually does. Nothing here describes a feature the app does not have.</p>
+
+    <hr>
+
+    <h2>The short version</h2>
+    <div class="callout">
+      <p style="margin:0;">ThrottleEDGE runs on your location. It uses where you are to draw the map, build a route, read the posted speed limit, name the city and state you are riding through, and fetch the weather ahead of you. To do that, your location goes to Mapbox, to OpenWeatherMap, and to your phone's own geocoder (Apple or Google). It does not go to us: we run no servers, there is no account, and the app keeps no history of where you have been. There are no ads, no crash reporting, and no analytics of ours. The one exception is the Mapbox map SDK, which collects its own anonymized usage telemetry unless you turn it off from the map, as described below.</p>
+    </div>
+
+    <h2>Location</h2>
+    <p>Location is the app's core function and it does not work without it. The app explains why before it asks, and the system permission prompt appears only when you tap the button to turn location on.</p>
+    <ul>
+      <li><strong>Always, not just while using:</strong> the app asks for "Always" location so that announcements keep going with the screen off and the phone in your pocket. On iPhone the app first asks while in use, then asks once to upgrade to Always the first time you start a route. On Android it runs a foreground service with a notification that says the app is riding with you.</li>
+      <li><strong>Precision:</strong> the app uses the most precise GPS fix your phone offers, continuously, while a ride is running.</li>
+      <li><strong>No history:</strong> each location fix is used the moment it arrives and then discarded. The app does not store where you have been, on your phone or anywhere else, and we never receive it.</li>
+      <li><strong>Where it goes:</strong> your location is sent only to the services below, each for one job.</li>
+    </ul>
+
+    <h2>Motion</h2>
+    <p>Once you are moving faster than about 10 miles per hour, the app asks for motion and fitness permission. It uses your phone's activity detection to tell whether you are on the bike or walking, so announcements stop on their own when the ride ends. The result is used in memory only and is never sent anywhere. If you decline, everything else still works, and announcements stop when you end the ride yourself.</p>
+
+    <h2>Services that receive your location</h2>
+    <ul>
+      <li><strong>Mapbox (map and routes):</strong> the map is drawn by the Mapbox Maps SDK, which requests map tiles for the area around you as you ride, so Mapbox's servers see roughly where the map is pointed. When you enter a destination, the app sends your current position and the destination to the Mapbox Directions API to get the route, the turns, and the posted speed limits along the way. The Mapbox SDK also collects its own usage and location telemetry by default, which Mapbox says is anonymized and used to improve its maps; you can turn that off from the information button on the map, under Mapbox Telemetry. <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">Mapbox's privacy policy</a> governs that data.</li>
+      <li><strong>OpenWeatherMap (weather):</strong> the app sends your coordinates to OpenWeatherMap to get current and hourly weather for rain, cold, freeze and wind chill announcements. It does this when the ride starts, every 15 minutes while you are moving, and whenever you cross into a new city or state. <a href="https://openweather.co.uk/privacy-policy" target="_blank" rel="noopener">OpenWeatherMap's privacy policy</a> governs that data.</li>
+      <li><strong>Apple or Google (place names):</strong> to say which city and state you are in, the app asks your phone's built in geocoder, which is run by Apple on iPhone and Google on Android. The same service turns the destination you type into a map position. The coordinates and the text you type go to Apple or Google under <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's</a> or <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's</a> privacy policy.</li>
+    </ul>
+
+    <h2>Voice</h2>
+    <p>Every announcement is spoken by your phone's own text to speech engine. The app sends nothing to a speech service of ours. Whether the engine itself uses the network depends on the voice installed on your phone, which you control in your phone's settings. The app never listens: it has no microphone permission and no voice input.</p>
+
+    <h2>What stays on your phone, and what does not exist</h2>
+    <ul>
+      <li><strong>No account, no sign in.</strong> There is nothing to register and nothing that identifies you to us.</li>
+      <li><strong>No saved data.</strong> The app keeps no settings file, no recent destinations, no ride log. Close the app and the destination and route are gone.</li>
+      <li><strong>No analytics, crash reporting, advertising, or tracking of ours.</strong> We run no analytics or crash reporting service and no ad network. The only usage data that leaves the app is the Mapbox SDK's own telemetry, described above, which you can turn off from the map. Apple's privacy manifest for the app declares precise location, used only for app functionality, not linked to you and not used for tracking.</li>
+      <li><strong>No camera, photos, microphone, contacts, or Bluetooth.</strong> The app never requests them.</li>
+      <li><strong>Sunrise and sunset</strong> for the glare and dusk announcements are calculated on the phone from your position. No service is called for them.</li>
+    </ul>
+
+    <h2>Children's privacy</h2>
+    <p>ThrottleEDGE is for licensed motorcycle riders and is not directed at children under 13. It collects nothing that identifies a person of any age.</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Location:</strong> you can change or withdraw the permission at any time in your phone's settings. Without it the app shows its explainer and does nothing else.</li>
+      <li><strong>Motion:</strong> decline it or turn it off in your phone's settings. Announcements then stop when you end the ride.</li>
+      <li><strong>Mapbox telemetry:</strong> turn it off from the information button on the map.</li>
+      <li><strong>Deleting the app</strong> removes everything, because nothing was stored to begin with.</li>
+    </ul>
+
+    <h2>Data retention</h2>
+    <p>We retain nothing, because nothing reaches us. Mapbox, OpenWeatherMap, Apple and Google each keep request data under their own policies, linked above.</p>
+
+    <h2>Security</h2>
+    <p>Every request the app makes to Mapbox and OpenWeatherMap is encrypted in transit. There is no database of yours on our side to secure.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, we will update the dates at the top. Anything new that handles your information, such as a server of ours between the app and the weather service, will be described here before the version that adds it ships.</p>
+
+    <h2>Contact us</h2>
+    <p>If you have questions about this policy or how ThrottleEDGE handles information, contact us at <a href="mailto:hello@threefoldstudio.co">hello@threefoldstudio.co</a>.</p>
+
+    <hr>
+    <p style="font-style:italic; color:var(--slate-dim); font-size:0.9rem;">This policy describes the app's actual functionality as of the date above, on iOS and Android.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>A product of <a href="/">Threefold Studio LLC</a></p>
+    <p style="margin:10px 0 0;"><a href="/app-terms">App Terms of Use</a></p>
+    <p style="margin:10px 0 0;"><a href="/privacy">Threefold Studio Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Threefold Studio Terms of Service</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
